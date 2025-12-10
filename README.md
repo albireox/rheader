@@ -48,7 +48,7 @@ Currently, `rheader` provides two functions: `read_header` which reads the heade
 
 ## Benchmarks
 
-Benchmarks reading a directory with 62 gzipped FITS files using, `rheader`, `astropy.io.fits`, and `fitsio`:
+Benchmarks reading a directory with 62 gzipped FITS files using `rheader`, `astropy.io.fits`, and `fitsio`:
 
 ```python
 In [10]: from rheader import read_header
