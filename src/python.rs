@@ -12,14 +12,14 @@ use pyo3::types::{PyDict, PyString};
 
 use crate::header::read_header;
 
-// Python class wrapper for Header.
+/// Python class wrapper for Header.
 #[pyclass]
 struct Header {
     #[pyo3(get)]
     keywords: Py<PyDict>,
 }
 
-// Implement __repr__ for Header.
+/// Implement __repr__ for Header.
 #[pymethods]
 impl Header {
     fn __repr__(slf: &Bound<'_, Self>) -> PyResult<String> {
@@ -30,7 +30,7 @@ impl Header {
     }
 }
 
-// Python class wrapper for Keyword.
+/// Python class wrapper for Keyword.
 #[pyclass]
 struct Keyword {
     #[pyo3(get)]
@@ -41,7 +41,7 @@ struct Keyword {
     comment: Option<Py<PyAny>>,
 }
 
-// Implement __repr__ for Keyword.
+/// Implement __repr__ for Keyword.
 #[pymethods]
 impl Keyword {
     fn __repr__(slf: &Bound<'_, Self>) -> PyResult<String> {
@@ -69,7 +69,7 @@ impl Keyword {
     }
 }
 
-// Read header to a Python dictionary.
+/// Read header to a Python dictionary.
 #[pyfunction]
 #[pyo3(name = "read_header", signature = (path))]
 fn _read_header(py: Python<'_>, path: &str) -> PyResult<Py<PyDict>> {
@@ -109,7 +109,7 @@ fn _read_header(py: Python<'_>, path: &str) -> PyResult<Py<PyDict>> {
     return Ok(dict.into());
 }
 
-// Read header and convert to Header class.
+/// Read header and convert to Header class.
 #[pyfunction(name="read_header_to_class", signature = (path))]
 fn _read_header_to_class(py: Python<'_>, path: &str) -> PyResult<Header> {
     let keywords_dict = _read_header(py, path)?;
