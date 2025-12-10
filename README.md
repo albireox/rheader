@@ -25,7 +25,6 @@ An installation of Rust is required. You can find instructions to install Rust [
 >>> type(header)
 dict
 
-
 >>> print(header)
 {'SIMPLE': (True, 'conforms to FITS standard'),
  'BITPIX': (16, 'array data type'),
