@@ -14,6 +14,8 @@ This package provides a no-frills interface to read FITS headers from FITS files
 pip install -U git+https://github.com/albireox/rheader.git
 ```
 
+An installation of Rust is required. You can find instructions to install Rust [here](https://www.rust-lang.org/tools/install).
+
 ## Minimal Example
 
 ```python
@@ -87,5 +89,7 @@ In [7]: import fitsio
 In [8]: %timeit x = [fitsio.read_header(str(f)) for f in uncompressed_files]
 98.2 ms ± 846 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 ```
+
+Both `astropy` and `fitsio` provide more functionality in the header classes, so some additional overhead is expected. Apples to apples, `rheader` is probably 1.5-2x faster than `astropy` for the same functionality in uncompressed files. `fitsio` seems to have more overhead than what is justified by any additional functionality.
 
 All benchmarks were run on an Ubuntu machine with 28 cores and 62 GB of RAM. The files were stored in an HDD disk.
